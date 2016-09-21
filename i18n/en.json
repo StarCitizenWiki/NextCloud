@@ -1,0 +1,41 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"nextcloud-desc": "Adds Users to a NextCloud instance after a successfull E-Mail confirmation",
+
+	"nextcloud-mail-head-register": "$1 Cloud - Credentials",
+	"nextcloud-mail-body-register": "
+	Hello $1!
+	This is a automatically generated mail from $4.
+	You received this message because you successfully confirmed your E-Mail-Address.
+	Due to this confirmation the Wiki created an account $4 Cloud account for you.
+	You can access the Cloud at: $2
+
+	Credentials:
+	Username: $1
+	Password: $3
+
+	If you don't want to use the Cloud please reply to this mail with \"delete\".
+	We will then delete your Cloud account and all data associated with it.
+
+ 	Yours $4
+	----
+	$5",
+
+	"nextcloud-mail-head-deactivation": "$1 Cloud - Account Deactivation",
+	"nextcloud-mail-body-deactivation": "
+	Hello $1
+	Your account on $2 has been disabled.
+	Due to the deactivation you are unable to access the Cloud and the Wiki.
+	Please contact an admin to resolve this issue.
+
+	Yours $2
+	----
+	$3",
+
+	"nextcloud-debug": "Something went wrong with your NextCloud extension ($1). Response: $2\r\n",
+	"nextcloud-debug-init-failed": "NextCloud Init failed, check your Extension config.",
+	"nextcloud-debug-user-creation-failed": "Creating the NextCloud user failed, see the following response: $1\r\n",
+	"nextcloud-debug-user-deletion-failed": "Deleting the NextCloud user failed, see the following response: $1\r\n"
+}

@@ -1,0 +1,44 @@
+{
+	"name": "NextCloud",
+	"version": "1.0.0",
+	"author": [
+		"[https://star-citizen.wiki/Benutzer:FoXFTW FoXFTW]"
+	],
+	"url": "https://star-citizen.wiki",
+	"descriptionmsg": "nextcloud-desc",
+	"license-name": "",
+	"type": "other",
+	"AutoloadClasses": {
+		"NextCloud": "NextCloud.body.php"
+	},
+	"config": {
+		"NextCloudUrl": "",
+		"NextCloudAdminUser": "",
+		"NextCloudAdminPassword": "",
+		"NextCloudUserGroup": "",
+		"NextCloudUserQuota": "256MB",
+		"NextCloudWikiName": "",
+		"NextCloudContactMail": "",
+		"NextCloudDebug": false
+	},
+	"ExtensionMessagesFiles": {},
+	"Hooks": {
+		"ConfirmEmailComplete": [
+			"NextCloud::addUser"
+		],
+		"BlockIpComplete": [
+			"NextCloud::disableUser"
+		]
+	},
+	"MessagesDirs": {
+		"NextCloud": [
+			"i18n"
+		]
+	},
+	"ResourceModules": {},
+	"ResourceFileModulePaths": {
+		"localBasePath": "",
+		"remoteExtPath": "NextCloud"
+	},
+	"manifest_version": 1
+}

@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"nextcloud-desc": "Extension description",
+
+	"nextcloud-mail-head-register": "Mail Subject on registration",
+	"nextcloud-mail-body-register": "Mail Body on registration",
+
+	"nextcloud-mail-head-deactivation": "Mail Subject on deactivation",
+	"nextcloud-mail-body-deactivation": "Mail Body on deactivation",
+
+	"nextcloud-debug": "Basic debug message with response content",
+	"nextcloud-debug-init-failed": "Message if init failed",
+	"nextcloud-debug-user-creation-failed": "Message that the account creation failed",
+	"nextcloud-debug-user-deletion-failed": "Message that deleting the account failed"
+}

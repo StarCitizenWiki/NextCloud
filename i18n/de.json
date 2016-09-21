@@ -1,0 +1,41 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"nextcloud-desc": "Fügt Benutzer nach Bestätigung der E-Mail-Adresse einer NextCloud Instanz zu.",
+
+	"nextcloud-mail-head-register": "$1 Cloud - Zugansdaten",
+	"nextcloud-mail-body-register": "
+	Hallo $1!
+	Dies ist eine automatisch generierte Mail von $4.
+	Du erhältst diese Nachricht, da du erfolgreich deine Mail-Adresse bestätigt hast.
+	Durch diese Bestätigung wurde automatisch ein Benutzeraccount auf der $4 Cloud erstellt.
+	Diese kannst du unter folgender URL aufrufen: $2
+
+	Zugansdaten:
+	Benutzername: $1
+	Passwort: $3
+
+	Falls du diesen Account nicht in Anspruch nehmen möchtest antworte einfach kurz auf diese Mail mit \"löschen\".
+	Wir werden dann all deine Daten auf der $4 Cloud entfernen
+
+	Dein $4
+	----
+	$5",
+
+	"nextcloud-mail-head-deactivation": "$1 Cloud - Sperrung",
+	"nextcloud-mail-body-deactivation": "
+	Hallo $1
+	Dein Benutzerkonto auf $2 wurde temporär gesperrt.
+	Aus diesem Grund kannst du nun nicht mehr auf die Cloud und das Wiki zugreifen.
+	Bitte kontaktiere einen Admin unter der im Fußbereich angezeigten E-Mail-Adresse
+
+	Dein $2
+	----
+	$3",
+
+	"nextcloud-debug": "Bei der NextCloud Erweiterung ist etwas schief gelaufen ($1). $2\r\n",
+	"nextcloud-debug-init-failed": "Initialisierung der NextCloud Erweiterung ist fehlgeschlagen, bitte überprüfe deine Einstellungen.",
+	"nextcloud-debug-user-creation-failed": "Die Erstellung des NextCloud Benutzerkontos ist fehlgeschlagen. $1\r\n",
+	"nextcloud-debug-user-deletion-failed": "Die Entfernung des NextCloud Benutzerkontos ist fehlgeschlagen. $1\r\n"
+}
