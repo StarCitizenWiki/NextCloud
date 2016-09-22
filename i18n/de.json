@@ -4,7 +4,7 @@
 	},
 	"nextcloud-desc": "Fügt Benutzer nach Bestätigung der E-Mail-Adresse einer NextCloud Instanz zu.",
 
-	"nextcloud-mail-head-register": "$1 Cloud - Zugansdaten",
+	"nextcloud-mail-head-register": "$1 Cloud - Zugangsdaten",
 	"nextcloud-mail-body-register": "
 	Hallo $1!
 	Dies ist eine automatisch generierte Mail von $4.

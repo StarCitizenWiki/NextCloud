@@ -101,14 +101,14 @@ class NextCloud {
 			{
 				if (self::$_options['Debug'])
 				{
-					$errorMessage = wfMessage('nextcloud-debug-user-creation-failed')->plain();
+					$errorMessage = wfMessage('nextcloud-debug-user-creation-failed', self::_getResponseText($response['message']))->plain();
 					wfErrorLog(date('Y-m-d H:i:s', time()).' - '.$errorMessage , self::$_debug['path']);
 				}
 				return self::_deleteUser($user);
 			}
 
 
-			$mailHeader = wfMessage('nextcloud-mail-head-register', self::$_wikiName)->plain();
+			$mailHeader = wfMessage('nextcloud-mail-head-register', self::$_options['WikiName'])->plain();
 			$mailBody = wfMessage(
 							'nextcloud-mail-body-register',
 							$user->getName(),
@@ -135,15 +135,16 @@ class NextCloud {
 	private static function _deleteUser(User $user)
 	{
 		$curl = new CurlWrapper(
-			self::$_apiUrl.'users/'.$user->getName(),
-			array(
+		    self::$_apiUrl.'/users/'.$user->getName(),
+		    array(
 				CURLOPT_HTTPAUTH => CURLAUTH_BASIC,
 				CURLOPT_USERPWD => self::$_options['NextCloudAdminUser'].':'.self::$_options['NextCloudAdminPassword'],
 				CURLOPT_CUSTOMREQUEST => 'DELETE'
-			)
+		    )
 		);
+		$response = $curl->getResponse();
 
-		if ($curl->getResponse()['code'] != 100)
+		if ($response['code'] == 101)
 		{
 			if (self::$_options['Debug'])
 			{
@@ -215,13 +216,13 @@ class NextCloud {
 
 		if (!empty(self::$_options['NextCloudUserGroup']))
 		{
-			self::$_apiUrl = new CurlWrapper(
-			    $apiURL.'/users/'.$user->getName().'/groups',
+			$curl = new CurlWrapper(
+			    self::$_apiUrl.'/users/'.$user->getName().'/groups',
 			    array(
 					CURLOPT_HTTPAUTH => CURLAUTH_BASIC,
 					CURLOPT_USERPWD => self::$_options['NextCloudAdminUser'].':'.self::$_options['NextCloudAdminPassword'],
 			        CURLOPT_POSTFIELDS => array(
-			            'groupid' => self::$_options['NextCloudUserQuota']
+			            'groupid' => self::$_options['NextCloudUserGroup']
 			        )
 			    )
 			);
@@ -244,6 +245,7 @@ class NextCloud {
 
 	private static function _getResponseText($xml)
 	{
+		libxml_use_internal_errors(true);
 		$responseArray = (array) simplexml_load_string($xml);
 		if (!isset($responseArray['meta']))
 		{
@@ -370,20 +372,11 @@ class CurlWrapper
      */
     public function getResponse()
     {
-         if ($this->response) {
-             return $this->response;
-         }
-
         $response = curl_exec($this->ch);
         $error    = curl_error($this->ch);
         $errno    = curl_errno($this->ch);
 
-        if (is_resource($this->ch)) {
-            curl_close($this->ch);
-        }
-
         if (0 !== $errno) {
-            throw new \RuntimeException($error, $errno);
 			return array('code' => $errno, 'message' => $error);
         }
 
