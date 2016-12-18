@@ -1,4 +1,3 @@
-
 <?php
 class NextCloud {
 
@@ -90,7 +89,8 @@ class NextCloud {
 		        CURLOPT_POSTFIELDS => array(
 		            'userid' => $user->getName(),
 		            'password' => self::$_options['NextCloudUserPassword']
-		        )
+		        ),
+				CURLOPT_HTTPHEADER => array("OCS-APIRequest: true")
 		    )
 		);
 		$response = $curl->getResponse();
@@ -139,7 +139,8 @@ class NextCloud {
 		    array(
 				CURLOPT_HTTPAUTH => CURLAUTH_BASIC,
 				CURLOPT_USERPWD => self::$_options['NextCloudAdminUser'].':'.self::$_options['NextCloudAdminPassword'],
-				CURLOPT_CUSTOMREQUEST => 'DELETE'
+				CURLOPT_CUSTOMREQUEST => 'DELETE',
+				CURLOPT_HTTPHEADER => array("OCS-APIRequest: true")				
 		    )
 		);
 		$response = $curl->getResponse();
@@ -171,6 +172,7 @@ class NextCloud {
 		            'key' => 'email',
 		            'value' => $user->getEmail(),
 		        )),
+				CURLOPT_HTTPHEADER => array("OCS-APIRequest: true")
 		    )
 		);
 		$response = $curl->getResponse();
@@ -198,6 +200,7 @@ class NextCloud {
 			            'key' => 'quota',
 			            'value' => self::$_options['NextCloudUserQuota'],
 			        )),
+					CURLOPT_HTTPHEADER => array("OCS-APIRequest: true"),
 			    )
 			);
 			$response = $curl->getResponse();
@@ -223,7 +226,8 @@ class NextCloud {
 					CURLOPT_USERPWD => self::$_options['NextCloudAdminUser'].':'.self::$_options['NextCloudAdminPassword'],
 			        CURLOPT_POSTFIELDS => array(
 			            'groupid' => self::$_options['NextCloudUserGroup']
-			        )
+			        ),
+					CURLOPT_HTTPHEADER => array("OCS-APIRequest: true")
 			    )
 			);
 			$response = $curl->getResponse();
@@ -285,6 +289,7 @@ class NextCloud {
 					'key' => 'password',
 					'password' => self::$_options['NextCloudUserPassword']
 				)),
+				CURLOPT_HTTPHEADER => array("OCS-APIRequest: true"),
 			)
 		);
 		$response = $curl->getResponse();
@@ -310,6 +315,7 @@ class NextCloud {
 					'key' => 'email',
 					'value' => self::$_options['WikiContactMail'],
 				)),
+				CURLOPT_HTTPHEADER => array("OCS-APIRequest: true"),
 			)
 		);
 		$response = $curl->getResponse();
